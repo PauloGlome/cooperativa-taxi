@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administrador - Cooperativa de Táxi</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+
+        <div class="logoArea">
+
+            <img src="imagens/logo.png" class="logo" alt="Logo CPASTPA">
+
+            <div>
+                <h1>Administrador</h1>
+                <p>CPASTPA</p>
+            </div>
+
+        </div>
+
+        <div class="topButtons">
+
+            <button id="darkBtn" type="button" aria-label="Alternar modo escuro">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- LOGIN DO ADMINISTRADOR -->
+    <main>
+
+        <section id="loginSection" class="adminLogin">
+
+            <h2>Painel do Administrador</h2>
+
+            <p>Introduza o seu número de telefone para entrar.</p>
+
+            <input
+                type="tel"
+                id="adminUser"
+                placeholder="Número de telefone (+244...)"
+                autocomplete="tel">
+
+            <button id="loginAdmin" type="button">
+                Entrar
+            </button>
+
+            <!-- RECAPTCHA -->
+            <div id="recaptcha-container"></div>
+
+            <!-- ÁREA DO CÓDIGO SMS -->
+            <div id="codigoArea" style="display: none;">
+
+                <input
+                    type="text"
+                    id="codigoSMS"
+                    placeholder="Digite o código SMS"
+                    inputmode="numeric"
+                    maxlength="6">
+
+                <button id="confirmarCodigo" type="button">
+                    Confirmar Código
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PAINEL PRINCIPAL -->
+        <section id="painelAdmin" style="display: none;">
+
+            <div class="painelCabecalho">
+
+                <div>
+                    <h2>👨‍💼 Bem-vindo, Administrador</h2>
+                    <p>Gestão da Cooperativa de Táxi</p>
+                </div>
+
+                <button id="btnSair" type="button">
+                    🚪 Terminar Sessão
+                </button>
+
+            </div>
+
+
+            <!-- ESTATÍSTICAS -->
+            <div class="adminCards">
+
+                <div class="card">
+
+                    <h3>Total de Motoristas</h3>
+
+                    <p id="totalMotoristas">0</p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Disponíveis</h3>
+
+                    <p id="totalDisponiveis">0</p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Ocupados</h3>
+
+                    <p id="totalOcupados">0</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- GESTÃO DOS MOTORISTAS -->
+            <section class="gestaoMotoristas">
+
+                <div class="secaoTitulo">
+
+                    <h2>🚖 Motoristas</h2>
+
+                    <button id="novoMotorista" type="button">
+                        ➕ Adicionar Motorista
+                    </button>
+
+                </div>
+
+
+                <!-- PESQUISA -->
+                <input
+                    type="search"
+                    id="pesquisaMotorista"
+                    placeholder="🔍 Pesquisar motorista, viatura ou telefone">
+
+
+                <!-- FORMULÁRIO -->
+                <div id="formMotorista" style="display: none;">
+
+                    <h3>Novo Motorista</h3>
+
+                    <input
+                        type="text"
+                        id="nomeMotorista"
+                        placeholder="Nome completo">
+
+                    <input
+                        type="text"
+                        id="viaturaMotorista"
+                        placeholder="Número da viatura">
+
+                    <input
+                        type="tel"
+                        id="telefoneMotorista"
+                        placeholder="Telefone">
+
+                    <input
+                        type="tel"
+                        id="whatsappMotorista"
+                        placeholder="WhatsApp">
+
+                    <select id="estadoMotorista">
+
+                        <option value="Disponível">
+                            🟢 Disponível
+                        </option>
+
+                        <option value="Ocupado">
+                            🔴 Ocupado
+                        </option>
+
+                    </select>
+
+                    <button id="guardarMotorista" type="button">
+                        💾 Guardar Motorista
+                    </button>
+
+                </div>
+
+
+                <!-- TABELA -->
+                <div class="tabelaContainer">
+
+                    <table class="adminTabela">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Nº</th>
+                                <th>Motorista</th>
+                                <th>Viatura</th>
+                                <th>Estado</th>
+                                <th>WhatsApp</th>
+                                <th>Telefone</th>
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="listaMotoristas">
+
+                            <!-- Os motoristas serão carregados pelo JavaScript -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/dark mode.js"></script>
+
+    <script type="module" src="js/admin.js"></script>
+
+</body>
+
+</html>

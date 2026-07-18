@@ -1,0 +1,123 @@
+const traducoes = {
+
+pt: {
+    cooperativa: "Cooperativa de Táxi",
+    online: "ONLINE",
+    inicio: "Início",
+    reclamacoes: "Reclamações",
+    contacto: "Contacto",
+    administrador: "Administrador",
+    opcoes: "Opções",
+    entrar: "Entrar",
+    disponivel: "Disponível",
+    ocupado: "Ocupado",
+    whatsapp: "WhatsApp",
+    telefone: "Telefone",
+    motoristas: "Motoristas",
+    motorista: "Motorista",
+    estado: "Estado",
+    idioma: "Idioma"
+},
+
+en: {
+    cooperativa: "Taxi Cooperative",
+    online: "ONLINE",
+    inicio: "Início",
+    reclamacoes: "Reclamações",
+    contacto: "Contacto",
+    administrador: "Administrador",
+    opcoes: "Opções",
+    entrar: "Entrar",
+    disponivel: "Disponível",
+    ocupado: "Ocupado",
+    whatsapp: "WhatsApp",
+    telefone: "Telefone",
+    motoristas: "Motoristas",
+    motorista: "Motorista",
+    estado: "Estado",
+    idioma: "Idioma"
+},
+
+fr: {
+    cooperativa: "Coopérative de Taxis",
+    online: "EN LIGNE",
+    inicio: "Accueil",
+    reclamacoes: "Réclamations",
+    contacto: "Contact",
+    administrador: "Administrateur",
+    opcoes: "Options",
+    entrar: "Connexion",
+    disponivel: "Disponible",
+    ocupado: "Occupé",
+    whatsapp: "WhatsApp",
+    telefone: "Téléphone",
+    motoristas: "Chauffeurs",
+    motorista: "Chauffeur",
+    estado: "Statut",
+    idioma: "Langue"
+},
+
+es: {
+    cooperativa: "Cooperativa de Taxis",
+    online: "EN LÍNEA",
+    inicio: "Inicio",
+    reclamacoes: "Reclamaciones",
+    contacto: "Contacto",
+    administrador: "Administrador",
+    opcoes: "Opciones",
+    entrar: "Entrar",
+    disponivel: "Disponible",
+    ocupado: "Ocupado",
+    whatsapp: "WhatsApp",
+    telefone: "Teléfono",
+    motoristas: "Conductores",
+    motorista: "Conductor",
+    estado: "Estado",
+    idioma: "Idioma"
+}
+
+};
+
+// Idioma padrão
+let idiomaAtual = localStorage.getItem("idioma") || "pt";
+
+// Função para traduzir a página
+function traduzirPagina() {
+
+const idioma = traducoes[idiomaAtual];
+
+if (!idioma) return;
+
+document.querySelectorAll("[data-i18n]").forEach(elemento => {
+
+    const chave = elemento.getAttribute("data-i18n");
+
+    if (idioma[chave]) {
+        elemento.textContent = idioma[chave];
+    }
+
+});
+
+}
+
+// Função para mudar o idioma
+function mudarIdioma(novoIdioma) {
+
+if (!traducoes[novoIdioma]) return;
+
+idiomaAtual = novoIdioma;
+
+localStorage.setItem("idioma", novoIdioma);
+
+traduzirPagina();
+
+location.reload();
+
+}
+
+// Traduz automaticamente quando a página carrega
+document.addEventListener("DOMContentLoaded", () => {
+
+traduzirPagina();
+
+});
